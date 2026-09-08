@@ -1,5 +1,5 @@
 # freeCodeCamp/devdocs context
-> refreshed 2026-09-03 | upstream default: main @ 77abbf24
+> refreshed 2026-09-09 | upstream default: main @ 0f9111bc
 
 ## Identity & policies
 - upstream: freeCodeCamp/devdocs, default branch main, primary language Ruby (Sinatra) + vanilla JS frontend, English-first (yes).
@@ -27,6 +27,8 @@
 ## Gap ledger (dedupe)
 - `2026-08-24` — dropped-no-tractable-issue (wheelhouse thin; shortcut/UI issues not reproducible). Lesson: docs-content bundle is the bread-and-butter for the trivial loop.
 - `2026-09-03` — trivial doc cleanup PR: broken `lib/docs/scrapers/minitest.rb` link → `lib/docs/scrapers/rdoc/minitest.rb`; stale `openjdk-16-jre-headless` → `openjdk-$VERSION-jre-headless` (2 lines); typos `runned→run`, `can modified→can be modified`, `to modified→to modify` (scraper-reference.md). Outcome: pr-opened.
+- `2026-09-09` — trivial doc cleanup PR (fork #5): dead `www.rubydoc.info/.../Nokogiri/XML/Node` links → `https://nokogiri.org/rdoc/Nokogiri/XML/Node.html` (2×, filter-reference.md); typos `can't reached→can't be reached` (filter-reference.md), `as follow→as follows` (maintainers.md), `miss-formatted→mis-formatted` (documentation_bug.md). Outcome: pr-opened.
 
 ## Mined gaps (discovered, not yet attempted)
 - `2026-09-03` — no further verified trivial gaps found after full repo scan (external links 200, thor commands all present, docs path refs correct). Next trivial pass: re-check after scrapers/docs churn.
+- `2026-09-09` — after this pass, remaining candidates judged non-actions: `rubydoc.info` fully replaced by nokogiri.org/rdoc; remaining prose is clean. Open upstream PR #2725 still covers only scraper-reference.md + file-scrapers.md (do not re-do; re-check its merge state next pass).
