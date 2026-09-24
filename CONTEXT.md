@@ -1,5 +1,5 @@
 # freeCodeCamp/devdocs context
-> refreshed 2026-09-09 | upstream default: main @ 0f9111bc
+> refreshed 2026-09-24 | upstream default: main @ fde566c2
 
 ## Identity & policies
 - upstream: freeCodeCamp/devdocs, default branch main, primary language Ruby (Sinatra) + vanilla JS frontend, English-first (yes).
@@ -31,8 +31,12 @@
 - `2026-09-08` — issue #2728 (scoped external-search shortcuts throw) is real + verified in current code (const reassignment in `Search#externalSearch`), but ALREADY CLAIMED by open PR #2729 (dajiaohuang, opened 2026-09-08). Dropped — do not duplicate. Other open issues not maintainer-engaged (#2634 unreproducible on macOS, #2557 maintainer spamguy can't reproduce, #2322 claimed by open PR #2200, #2525/#2615 no maintainer response). No maintainer-engaged open issue survives → repo-audit self-found gap.
 - `2026-09-09` — trivial cleanup PR (fork #7): broken `http://nokogiri.org/Nokogiri/XML/Node.html` link → `https://nokogiri.org/rdoc/Nokogiri/XML/Node.html` (scraper-reference.md, verified 404→200); typos `managment→management` (redis/entries.rb, user-facing type label), `mispelled→misspelled` (eslint/entries.rb comment), `clases→classes` (pandas/clean_html.rb comment), `aswell→as well` (updates.thor comment). Outcome: pr-opened. Deduped against open PR #2725 (covers only scraper-reference.md lines 87/189/204/284 + file-scrapers.md — not line 88) and fork PR #5.
 
+- `2026-09-24` — self-found docs gap: CONTRIBUTING.md "Contributing code and features" step 4 tells contributors modifying Ruby to run the tests, but says nothing about the JavaScript assets, whose typecheck + tests have gated CI since the `assets` job (test.yml) landed. README "Available Commands" tests block likewise omits `npm run typecheck` / `npm test` (both defined in package.json and run by the CI `assets` job). Verified live on upstream main @fde566c2: both commands exist in package.json and pass locally (typecheck clean, 41/41 asset tests); dedupe against upstream issues+PRs (typecheck/asset-tests searches) found nothing already documenting it. Fixed by documenting the JS asset typecheck+test commands in CONTRIBUTING.md + README.md. Outcome: pr-opened (fork #10).
+
 ## Mined gaps (discovered, not yet attempted)
 - `2026-09-03` — no further verified trivial gaps found after full repo scan (external links 200, thor commands all present, docs path refs correct). Next trivial pass: re-check after scrapers/docs churn.
 - `2026-09-09` — after this pass, remaining candidates judged non-actions: `rubydoc.info` fully replaced by nokogiri.org/rdoc; remaining prose is clean. Open upstream PR #2725 still covers only scraper-reference.md + file-scrapers.md (do not re-do; re-check its merge state next pass).
 - `2026-09-08` — CI gap: `test/assets/search_hash_test.js` (Node, added PR #2695) is never run in CI; `.github/workflows/test.yml` only runs `bundle exec rake`. Repro: `node --test test/assets/search_hash_test.js` passes locally (2/2), but no workflow invokes it. Expected: CI runs the JS test so search-hash regressions are caught. Proposed fix: add a `node --test test/assets/search_hash_test.js` step/job to test.yml. Dedupe: no upstream issue/PR wires the JS test into CI (PR #2695 merged without it). — status: pr-opened (fork PR #6, 2026-09-08)
 - `2026-09-08` — CI gap: `test/assets/search_hash_test.js` never ran in CI. Fix: added `javascript` job to `.github/workflows/test.yml` (`node --test test/assets/search_hash_test.js`), renamed workflow to "Tests". Outcome: pr-opened (fork PR #6, base=fork main, non-draft, CI green: test+javascript both success).
+
+- `2026-09-24` — CONTRIBUTING/README omit the JS asset `npm run typecheck` / `npm test` commands that CI gates on. status: attempted → pr-opened (fork #10, 2026-09-24).
