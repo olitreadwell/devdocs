@@ -73,11 +73,13 @@ The `call` method must return either `doc` or `html`, depending on the type of f
 
 ## Core filters
 
+* [`ApplyBaseUrlFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/apply_base_url.rb) — rewrites relative `a`, `img` and `iframe` URLs using the document's `<base href>`
 * [`ContainerFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/container.rb) — changes the root node of the document (remove everything outside)
 * [`CleanHtmlFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/clean_html.rb) — removes HTML comments, `<script>`, `<style>`, etc.
 * [`NormalizeUrlsFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/normalize_urls.rb) — replaces all URLs with their fully qualified counterpart
 * [`InternalUrlsFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/internal_urls.rb) — detects internal URLs (the ones to scrape) and replaces them with their unqualified, relative counterpart
 * [`NormalizePathsFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/normalize_paths.rb) — makes the internal paths consistent (e.g. always end with `.html`)
+* [`ParseCfEmailFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/parse_cf_email.rb) — decodes Cloudflare-obfuscated email addresses
 * [`CleanLocalUrlsFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/clean_local_urls.rb) — removes links, iframes and images pointing to localhost (`FileScraper` only)
 * [`InnerHtmlFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/inner_html.rb) — converts the document to a string
 * [`CleanTextFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/clean_text.rb) — removes empty nodes
