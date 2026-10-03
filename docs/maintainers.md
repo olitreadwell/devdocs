@@ -1,6 +1,6 @@
 # Maintainer's Guide
 
-This document is intended for [DevDocs maintainers](#list-of-maintainers).
+This document is intended for [DevDocs maintainers](#list-of-maintainers-in-alphabetical-order).
 
 ## Merging pull requests
 
