@@ -1,6 +1,6 @@
 # Maintainer's Guide
 
-This document is intended for [DevDocs maintainers](#list-of-maintainers).
+This document is intended for [DevDocs maintainers](#list-of-maintainers-in-alphabetical-order).
 
 ## Merging pull requests
 
@@ -140,7 +140,7 @@ nginx
 
 The following people (used to) maintain DevDocs:
 
-- [Ahmad Abdolsaheb](https://github.com/ahmadabdolsaheb)
+- [Ahmad Abdolsaheb](https://github.com/ahmaxed)
 - [Bryan Hernández](https://github.com/MasterEnoc)
 - [Jasper van Merle](https://github.com/jmerle)
 - [Jed Fox](https://github.com/j-f1)

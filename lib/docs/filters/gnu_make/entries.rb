@@ -34,7 +34,7 @@ module Docs
         end
 
         name.gsub!(/Appendix.{2}/, '') if name.include?('Appendix')
-        # remove withespace at the beginning left when "Appendix" is removed
+        # remove whitespace at the beginning left when "Appendix" is removed
         name.gsub!(/\G\s/, '')
 
         name

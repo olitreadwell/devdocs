@@ -178,8 +178,8 @@ export class Searcher extends Events {
   static SEPARATORS_REGEXP =
     /#|::|:-|->|\$(?=\w)|\-(?=\w)|\:(?=\w)|\ [\/\-&]\ |:\ |\ /g;
   static EOS_SEPARATORS_REGEXP = /(\w)[\-:]$/;
-  static INFO_PARANTHESES_REGEXP = /\ \(\w+?\)$/;
-  static EMPTY_PARANTHESES_REGEXP = /\(\)/;
+  static INFO_PARENTHESES_REGEXP = /\ \(\w+?\)$/;
+  static EMPTY_PARENTHESES_REGEXP = /\(\)/;
   static EVENT_REGEXP = /\ event$/;
   static DOT_REGEXP = /\.+/g;
   static WHITESPACE_REGEXP = /\s/g;
@@ -200,10 +200,10 @@ export class Searcher extends Events {
       .toLowerCase()
       .replace(Searcher.ELLIPSIS, Searcher.EMPTY_STRING)
       .replace(Searcher.EVENT_REGEXP, Searcher.EMPTY_STRING)
-      .replace(Searcher.INFO_PARANTHESES_REGEXP, Searcher.EMPTY_STRING)
+      .replace(Searcher.INFO_PARENTHESES_REGEXP, Searcher.EMPTY_STRING)
       .replace(Searcher.SEPARATORS_REGEXP, SEPARATOR)
       .replace(Searcher.DOT_REGEXP, SEPARATOR)
-      .replace(Searcher.EMPTY_PARANTHESES_REGEXP, Searcher.EMPTY_STRING)
+      .replace(Searcher.EMPTY_PARENTHESES_REGEXP, Searcher.EMPTY_STRING)
       .replace(Searcher.WHITESPACE_REGEXP, Searcher.EMPTY_STRING);
   }
 

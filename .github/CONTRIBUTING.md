@@ -59,7 +59,7 @@ In addition to the [guidelines for contributing code](#contributing-code-and-fea
 
 If the latest [documentation versions report](https://github.com/freeCodeCamp/devdocs/issues?utf8=%E2%9C%93&q=Documentation+versions+report+is%3Aissue+author%3Adevdocs-bot+sort%3Acreated-desc) wrongly shows a documentation to be up-to-date, please open an issue or a PR to fix it.
 
-**Important:** PR's that update documentation versions that do not contain the checklist shown to you in section B of the PR template may be closed without review.
+**Important:** PRs that update documentation versions that do not contain the checklist shown to you in section B of the PR template may be closed without review.
 
 Follow the following steps to update documentations to their latest version:
 
