@@ -24,7 +24,7 @@ If you're updating existing documentation to its latest version, please ensure t
 - [ ] Updated the versions and releases in the scraper file
 - [ ] Ensured the license is up-to-date
 - [ ] Ensured the icons and the `SOURCE` file in <code>public/icons/*your_scraper_name*/</code> are up-to-date if the documentation has a custom icon
-- [ ] Ensured `self.links` contains up-to-date urls if `self.links` is defined
+- [ ] Ensured `self.links` contains up-to-date URLs if `self.links` is defined
 - [ ] Tested the changes locally to ensure:
   - The scraper still works without errors
   - The scraped documentation still looks consistent with the rest of DevDocs

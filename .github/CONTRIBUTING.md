@@ -59,14 +59,14 @@ In addition to the [guidelines for contributing code](#contributing-code-and-fea
 
 If the latest [documentation versions report](https://github.com/freeCodeCamp/devdocs/issues?utf8=%E2%9C%93&q=Documentation+versions+report+is%3Aissue+author%3Adevdocs-bot+sort%3Acreated-desc) wrongly shows a documentation to be up-to-date, please open an issue or a PR to fix it.
 
-**Important:** PR's that update documentation versions that do not contain the checklist shown to you in section B of the PR template may be closed without review.
+**Important:** PRs that update documentation versions that do not contain the checklist shown to you in section B of the PR template may be closed without review.
 
-Follow the following steps to update documentations to their latest version:
+Follow these steps to update documentations to their latest version:
 
 1. Make version/release changes in the scraper file.
 2. Check if the license is still correct. Update `options[:attribution]` if needed.
 3. If the documentation has a custom icon, ensure the icons in <code>public/icons/*your_scraper_name*/</code> are up-to-date. If you pull the updated icon from a place different than the one specified in the `SOURCE` file, make sure to replace the old link with the new one.
-4. If `self.links` is defined, check if the urls are still correct.
+4. If `self.links` is defined, check if the URLs are still correct.
 5. If the scraper inherits from `FileScraper` rather than `URLScraper`, follow the instructions for that scraper in [`file-scrapers.md`](../docs/file-scrapers.md) to obtain the source material for the scraper.
 6. Generate the docs using `thor docs:generate <doc@version>`.
 7. Make sure `thor docs:generate` doesn't show errors and that the documentation still works well. Verify locally that everything works and that the categorization of entries is still good. Often, updates will require code changes in the scraper or its filters to tweak some new markup in the source website or to categorize new entries.
