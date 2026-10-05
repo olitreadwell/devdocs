@@ -21,6 +21,7 @@ export class Notif extends View {
   static activeClass = "_in";
   static attributes = { role: "alert" };
 
+  /** @type {NotifOptions} */
   static defaultOptions = { autoHide: 15000 };
 
   static events = { click: "onClick" };
