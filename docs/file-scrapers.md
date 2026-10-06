@@ -158,5 +158,5 @@ curl https://cache.ruby-lang.org/pub/ruby/$VERSION/ruby-$RELEASE.tar.gz > ruby.t
 tar -xf ruby.tar; cd ruby-$RELEASE; ./configure && make html; mv .ext/html path/to/devdocs/docs/ruby~$VERSION
 ```
 
-To generate the htmls file you have to run `make` command but it does not install Ruby in your system, only generates html files so you have not
+To generate the HTML file you have to run `make` command but it does not install Ruby in your system, only generates html files so you have not
 to worry about cleaning or removing a new Ruby installation.

@@ -249,17 +249,17 @@ To make life easier, there are a few utility methods that you can use in `get_la
 ### General HTTP methods
 * `fetch(url, opts)`
 
-  Makes a GET request to the url and returns the response body.
+  Makes a GET request to the URL and returns the response body.
 
   Example: [lib/docs/scrapers/bash.rb](../lib/docs/scrapers/bash.rb)
 * `fetch_doc(url, opts)`
 
-  Makes a GET request to the url and returns the HTML body converted to a Nokogiri document.
+  Makes a GET request to the URL and returns the HTML body converted to a Nokogiri document.
 
   Example: [lib/docs/scrapers/git.rb](../lib/docs/scrapers/git.rb)
 * `fetch_json(url, opts)`
 
-  Makes a GET request to the url and returns the JSON body converted to a dictionary.
+  Makes a GET request to the URL and returns the JSON body converted to a dictionary.
 
   Example: [lib/docs/scrapers/mdn/mdn.rb](../lib/docs/scrapers/mdn/mdn.rb)
 
