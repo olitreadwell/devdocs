@@ -3,7 +3,7 @@ module Docs
     self.type = 'phalcon'
     self.root_path = 'index.html'
     self.links = {
-      home: 'https://phalconphp.com/',
+      home: 'https://phalcon.io/',
       code: 'https://github.com/phalcon/cphalcon/'
     }
 

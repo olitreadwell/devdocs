@@ -71,8 +71,8 @@ download it, extract it with `dpkg -x $PACKAGE ./` and move `./usr/share/doc/ope
 to `path/to/devdocs/docs/openjdk~$VERSION`
 
 ```sh
-curl -O http://ftp.at.debian.org/debian/pool/main/o/openjdk-25/openjdk-25-doc_25+36-1_all.deb
-tar xf openjdk-25-doc_25+36-1_all.deb
+curl -O http://ftp.at.debian.org/debian/pool/main/o/openjdk-25/openjdk-25-doc_25.0.4.1+1-1~deb13u1_all.deb
+tar xf openjdk-25-doc_25.0.4.1+1-1~deb13u1_all.deb
 tar xf data.tar.xz
 mv ./usr/share/doc/openjdk-25-jre-headless/api/ docs/openjdk~25
 ```
@@ -149,7 +149,7 @@ cp -r doc $DEVDOCS/docs/rack
 
 ### Ruby
 Download the tarball of Ruby from https://www.ruby-lang.org/en/downloads/, extract it, run
-`./configure && make html` in your terminal (while your are in the ruby directory) and move
+`./configure && make html` in your terminal (while you are in the ruby directory) and move
 `.ext/html` to `path/to/devdocs/docs/ruby~$VERSION/`.
 
 Or run the following commands in your terminal:
@@ -158,5 +158,5 @@ curl https://cache.ruby-lang.org/pub/ruby/$VERSION/ruby-$RELEASE.tar.gz > ruby.t
 tar -xf ruby.tar; cd ruby-$RELEASE; ./configure && make html; mv .ext/html path/to/devdocs/docs/ruby~$VERSION
 ```
 
-To generate the htmls file you have to run `make` command but it does not install Ruby in your system, only generates html files so you have not
+To generate the HTML file you have to run `make` command but it does not install Ruby in your system, only generates html files so you have not
 to worry about cleaning or removing a new Ruby installation.
