@@ -18,7 +18,7 @@ module Docs
     html_filters.push 'eigen3/entries', 'eigen3/clean_html', 'title'
 
     # Remove the `clean_text` because Doxygen are actually creating empty
-    # anchor such as <a id="asd"></a> to do anchor link.. and that anchor
+    # anchor such as <a id="asd"></a> to do anchor link. and that anchor
     # will be removed by clean_text
     self.text_filters = FilterStack.new
     text_filters.push 'images', 'inner_html', 'attribution'
