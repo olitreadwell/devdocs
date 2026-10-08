@@ -21,7 +21,7 @@ module Docs
 
     self.links = {
       home: 'https://www.php.net/',
-      code: 'https://git.php.net/?p=php-src.git;a=summary'
+      code: 'https://github.com/php/php-src'
     }
 
     html_filters.push 'php/internal_urls', 'php/entries', 'php/clean_html', 'title'

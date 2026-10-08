@@ -112,7 +112,7 @@ module Docs
 
         @doc.traverse { |node| cleanup_tailwind_classes(node) }
 
-        # Remove weird <hr> (https://github.com/damms005/devdocs/commit/8c9fbd859b71a2525b94a35ea994393ce2b6fedb#commitcomment-50091018)
+        # Remove weird <hr> (https://github.com/freeCodeCamp/devdocs/commit/3bc074dd6d3e94ab409a17ea5fdb093afdab04a9)
         css('hr').remove
 
         doc

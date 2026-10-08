@@ -13,7 +13,7 @@ module Docs
 
     options[:skip_patterns] = [/legal/]
 
-    # https://github.com/spring-projects/spring-boot/blob/main/buildSrc/src/main/resources/NOTICE.txt
+    # https://github.com/spring-projects/spring-boot/blob/main/buildSrc/src/main/resources/org/springframework/boot/build/legal/NOTICE.txt
     options[:attribution] = <<-HTML
     Copyright &copy; 2012-2023 VMware, Inc.<br>
     Licensed under the Apache License, Version 2.0.
