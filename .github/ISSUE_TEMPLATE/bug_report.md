@@ -34,7 +34,7 @@ encountered it
 ## More resources
 
 <!--
-Add images, GIFs, screenshot, console output or any other resource that might help to understand this bug
+Add images, GIFs, screenshots, console output or any other resource that might help to understand this bug
 -->
 
 ## Possible fix

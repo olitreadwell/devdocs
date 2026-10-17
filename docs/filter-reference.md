@@ -221,6 +221,3 @@ module Docs
   end
 end
 ```
-
-
-return [[Home]]

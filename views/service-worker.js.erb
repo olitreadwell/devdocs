@@ -2,7 +2,7 @@
 <%# If the cache name changes DevDocs is assumed to be updated %>
 const cacheName = '<%= service_worker_cache_name %>';
 
-<%# Url's to cache when the service worker is installed %>
+<%# URLs to cache when the service worker is installed %>
 const urlsToCache = [
   '/',
   '/favicon.ico',
@@ -63,7 +63,7 @@ self.addEventListener('fetch', event => {
       const filename = pathname.substr(1 + pathname.lastIndexOf('/')).split(/\#|\?/g)[0];
       const extensions = ['.html', '.css', '.js', '.json', '.png', '.ico', '.svg', '.xml'];
 
-      <%# Attempt to return the index page from the cache if the user is visiting a url like devdocs.io/offline or devdocs.io/javascript/global_objects/array/find %>
+      <%# Attempt to return the index page from the cache if the user is visiting a URL like devdocs.io/offline or devdocs.io/javascript/global_objects/array/find %>
       <%# The index page will make sure the correct documentation or a proper offline page is shown  %>
       if (url.origin === location.origin && !extensions.some(ext => filename.endsWith(ext))) {
         const cachedIndex = await caches.match('/');
