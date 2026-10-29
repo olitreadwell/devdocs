@@ -62,7 +62,7 @@ export class DB {
 
   /** Probes for IndexedDB support and prepares the callback queue. */
   constructor() {
-    this.versionMultipler = $.isIE() ? 1e5 : 1e9;
+    this.versionMultiplier = $.isIE() ? 1e5 : 1e9;
     // Shadows the method of the same name with the answer it gives.
     useIndexedDBOf(this).useIndexedDB = this.useIndexedDB();
     this.callbacks = [];
@@ -89,7 +89,7 @@ export class DB {
       this.open = true;
       const req = indexedDB.open(
         DB.NAME,
-        DB.VERSION * this.versionMultipler + this.userVersion(),
+        DB.VERSION * this.versionMultiplier + this.userVersion(),
       );
       req.onsuccess = (event) =>
       this.onOpenSuccess(/** @type {IDBEvent} */ (event));
@@ -210,10 +210,10 @@ export class DB {
    * @param {number} actualVersion The version the stored database is at.
    */
   handleVersionMismatch(actualVersion) {
-    if (Math.floor(actualVersion / this.versionMultipler) !== DB.VERSION) {
+    if (Math.floor(actualVersion / this.versionMultiplier) !== DB.VERSION) {
       this.fail("version");
     } else {
-      this.setUserVersion(actualVersion - DB.VERSION * this.versionMultipler);
+      this.setUserVersion(actualVersion - DB.VERSION * this.versionMultiplier);
       this.db();
     }
   }
