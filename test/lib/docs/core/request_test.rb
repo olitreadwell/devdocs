@@ -45,6 +45,22 @@ class DocsRequestTest < Minitest::Spec
       assert request.options[:followlocation]
       refute request(url, followlocation: false).options[:followlocation]
     end
+
+    it "keeps the default headers when given other headers" do
+      req = request(headers: { 'Authorization' => 'token mytoken' })
+      assert_equal 'DevDocs', req.options[:headers]['User-Agent']
+      assert_equal 'token mytoken', req.options[:headers]['Authorization']
+    end
+
+    it "lets the given headers override the defaults" do
+      req = request(headers: { 'User-Agent' => 'Other' })
+      assert_equal 'Other', req.options[:headers]['User-Agent']
+    end
+
+    it "doesn't modify the default headers" do
+      request(headers: { 'User-Agent' => 'Other' })
+      assert_equal({ 'User-Agent' => 'DevDocs' }, Docs::Request::DEFAULT_OPTIONS[:headers])
+    end
   end
 
   describe "#run" do
