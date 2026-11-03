@@ -1,5 +1,7 @@
 // @ts-check
 
+import { $ } from "../../lib/util.js";
+
 /**
  * One radio button in the theme picker.
  *
@@ -43,6 +45,23 @@ export const settingsPage = (settings) => `\
 </div>
 
 <div class="_settings-fieldset">
+  <h2 class="_settings-legend">Fonts:</h2>
+  <div class="_settings-inputs">
+    <label class="_settings-label">
+      <input type="text" form="settings" name="baseFont" placeholder="system-ui, sans-serif" value="${$.escape(
+        String(settings.baseFont || ""),
+      )}"> Text font
+    </label>
+    <label class="_settings-label">
+      <input type="text" form="settings" name="monoFont" placeholder="ui-monospace, monospace" value="${$.escape(
+        String(settings.monoFont || ""),
+      )}"> Code font
+      <small>Any font installed on your device, as a CSS font-family list. Leave empty for the default.</small>
+    </label>
+  </div>
+</div>
+
+<div class="_settings-fieldset">
   <h2 class="_settings-legend">General:</h2>
 
   <div class="_settings-inputs">
@@ -68,12 +87,6 @@ export const settingsPage = (settings) => `\
       }>Disable autofocus of search input
     </label>
     <label class="_settings-label">
-      <input type="checkbox" form="settings" name="autoInstall" value="_auto-install"${
-        settings.autoInstall ? " checked" : ""
-      }>Automatically download documentation for offline use
-      <small>Only enable this when bandwidth isn't a concern to you.</small>
-    </label>
-    <label class="_settings-label">
       <input type="checkbox" form="settings" name="autoLatestVersion" value="_auto-latest-version"${
         settings.autoLatestVersion ? " checked" : ""
       }>Automatically switch to the latest version of a documentation
@@ -90,6 +103,12 @@ export const settingsPage = (settings) => `\
         settings.noDocSpecificIcon ? " checked" : ""
       }>Disable Language-specific Doc Favicons
       <small>With this checked, we will display the default DevDocs icon for all pages.</small>
+    </label>
+    <label class="_settings-label">
+      <input type="number" step="1" form="settings" name="listPageSize" min="0" value="${
+        settings.listPageSize
+      }"> Number of entries shown in the sidebar before &ldquo;Show more&hellip;&rdquo;
+      <small>0 shows all entries.</small>
     </label>
   </div>
 </div>
@@ -124,6 +143,19 @@ export const settingsPage = (settings) => `\
         settings.spaceTimeout
       }"> Delay until you can scroll by pressing space
       <small>Time in seconds</small>
+    </label>
+  </div>
+</div>
+
+<div class="_settings-fieldset">
+  <h2 class="_settings-legend">Custom CSS:</h2>
+
+  <div class="_settings-inputs">
+    <label class="_settings-label">
+      <textarea form="settings" name="customCss" class="_settings-css" rows="6" spellcheck="false" placeholder="._content { font-size: 1.125em; }">${$.escape(
+        String(settings.customCss || ""),
+      )}</textarea>
+      <small>Applied on top of DevDocs' own styles.</small>
     </label>
   </div>
 </div>
