@@ -45,7 +45,7 @@ docker run --name devdocs -d -p 9292:9292 devdocs
 
 DevDocs is made of two pieces: a Ruby scraper that generates the documentation and metadata, and a JavaScript app powered by a small Sinatra app.
 
-DevDocs requires Ruby 4.0.6 (defined in [`Gemfile`](./Gemfile)), libcurl, bsdtar (included in macOS, the `libarchive-tools` package on Debian and Alpine), and a JavaScript runtime supported by [ExecJS](https://github.com/rails/execjs#readme) (included in OS X and Windows; [Node.js](https://nodejs.org/en/) on Linux). On Arch Linux run `pacman -S ruby ruby-bundler ruby-erb ruby-irb`.
+DevDocs requires Ruby 4.0.7 (defined in [`Gemfile`](./Gemfile)), libcurl, bsdtar (included in macOS, the `libarchive-tools` package on Debian and Alpine), and a JavaScript runtime supported by [ExecJS](https://github.com/rails/execjs#readme) (included in OS X and Windows; [Node.js](https://nodejs.org/en/) on Linux). On Arch Linux run `pacman -S ruby ruby-bundler ruby-erb ruby-irb`.
 
 Once you have these installed, run the following commands:
 
@@ -114,6 +114,7 @@ Modifications made to each document include:
 * replacing all internal (scraped) URLs with their unqualified and relative counterpart
 * adding content, such as a title and link to the original document
 * ensuring correct syntax highlighting using [Prism](http://prismjs.com/)
+* converting math markup to native MathML using [KaTeX](https://katex.org/)
 
 These modifications are applied via a set of filters using the [HTML::Pipeline](https://github.com/jch/html-pipeline) library. Each scraper includes filters specific to itself, one of which is tasked with figuring out the pages' metadata.
 
@@ -148,7 +149,10 @@ thor console:docs   # Start a REPL in the "Docs" module
 thor test:all       # Run all tests
 thor test:docs      # Run "Docs" tests
 thor test:app       # Run "App" tests
-thor test:coverage  # Run coverage report on "App" tests
+thor test:coverage  # Run coverage report for core tests
+# The JavaScript assets are type-checked and tested with npm instead:
+npm run typecheck   # Type-check the assets and their tests
+npm test            # Run the asset tests
 
 # Assets
 thor assets:compile # Compile assets (not required in development mode)

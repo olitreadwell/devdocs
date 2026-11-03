@@ -28,9 +28,10 @@ module Docs
       Licensed under the Creative Commons Attribution 3.0 Unported License and the GNU Free Documentation License.
     HTML
 
+    # mariadb.com/downloads/ builds its version picker client-side, so read the
+    # official GitHub releases instead (release candidates are marked as prereleases).
     def get_latest_version(opts)
-      doc = fetch_doc('https://mariadb.com/downloads/', opts)
-      doc.at_css('#version-select-community_server > option').content.split('-')[0]
+      get_latest_github_release('MariaDB', 'server', opts, pattern: /\Amariadb-(.+)\z/)
     end
 
   end

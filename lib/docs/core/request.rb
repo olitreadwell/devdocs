@@ -18,6 +18,9 @@ module Docs
 
     def initialize(url, options = {})
       options = DEFAULT_OPTIONS.merge(options)
+      # The merge above is shallow, so passing :headers would otherwise drop
+      # the default ones, User-Agent included.
+      options[:headers] = DEFAULT_OPTIONS[:headers].merge(options[:headers] || {})
       @cache = options.delete(:cache)
       super url.to_s, options
     end

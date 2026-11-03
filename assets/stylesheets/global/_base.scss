@@ -28,6 +28,7 @@ body {
   font-size: 1em;
   font-weight: normal;
   font-family: $baseFont;
+  font-family: var(--baseFont);
   line-height: 1.7;
   color: $textColor; // fallback to show the error message to browsers that don't support CSS variables.
   color: var(--textColor);
@@ -148,6 +149,9 @@ table {
   overflow-x: auto;
   max-width: 100%;
 }
+
+// No overflow rule here: a scroll container on a <math> element leaves it blank in Chrome.
+math[display="block"] { margin: 1.5em 0; }
 
 caption {
   font-weight: var(--boldFontWeight);
