@@ -33,6 +33,11 @@ import { $ } from "../lib/util.js";
  * @property {number | string} spaceTimeout How long after typing space stops
  *   scrolling, in seconds. Not an integer, so it comes back as a string.
  * @property {StoredFlag} noDocSpecificIcon
+ * @property {string} baseFont A CSS font family list for the text; unset uses the default.
+ * @property {string} monoFont A CSS font family list for code; unset uses the default.
+ * @property {string} customCss A stylesheet applied on top of the app's.
+ * @property {number} listPageSize How many entries a sidebar list shows before
+ *   "Show more…"; 0 shows them all.
  * @property {StoredFlag} autoLatestVersion
  * @property {number} version The build the user last saw.
  * @property {StoredFlag} fastScroll
@@ -72,9 +77,15 @@ export class Settings {
     "spaceScroll",
     "spaceTimeout",
     "noDocSpecificIcon",
+    "listPageSize",
+    "baseFont",
+    "monoFont",
+    "customCss",
   ];
 
   static INTERNAL_KEYS = ["count", "schema", "version", "news"];
+
+  static FONTS = /** @type {const} */ (["baseFont", "monoFont"]);
 
   static LAYOUTS = [
     "_max-width",
@@ -97,6 +108,7 @@ export class Settings {
     spaceTimeout: 0.5,
     noDocSpecificIcon: false,
     autoLatestVersion: false,
+    listPageSize: config.max_results,
   };
 
   /** Opens the store and starts following the system colour scheme. */
@@ -284,7 +296,68 @@ export class Settings {
     for (var layout of Settings.LAYOUTS) {
       this.toggleLayout(layout, this.hasLayout(layout));
     }
+    for (var font of Settings.FONTS) {
+      this.applyFont(font);
+    }
+    this.applyCustomCss();
     this.initSidebarWidth();
+  }
+
+  /** @param {string} value A stylesheet; empty to remove it. */
+  setCustomCss(value) {
+    if (value.trim()) {
+      this.set("customCss", value);
+    } else {
+      this.del("customCss");
+    }
+    this.applyCustomCss();
+  }
+
+  /** Puts the stored stylesheet after the app's, so that it wins. */
+  applyCustomCss() {
+    let style = document.getElementById("custom-css");
+    const value = this.get("customCss");
+    if (!value) {
+      style?.remove();
+      return;
+    }
+    if (!style) {
+      style = document.createElement("style");
+      style.id = "custom-css";
+      document.head.append(style);
+    }
+    style.textContent = value;
+  }
+
+  /**
+   * Stores a font and applies it.
+   *
+   * @param {"baseFont" | "monoFont"} key
+   * @param {string} value A CSS font family list; empty for the default.
+   */
+  setFont(key, value) {
+    value = value.trim();
+    if (value) {
+      this.set(key, value);
+    } else {
+      this.del(key);
+    }
+    this.applyFont(key);
+  }
+
+  /**
+   * Overrides the stylesheet's font with the stored one, if any.
+   *
+   * @param {"baseFont" | "monoFont"} key
+   */
+  applyFont(key) {
+    const value = this.get(key);
+    const { style } = document.documentElement;
+    if (value) {
+      style.setProperty(`--${key}`, value);
+    } else {
+      style.removeProperty(`--${key}`);
+    }
   }
 
   /** @param {string} theme `"auto"`, `"dark"` or `"default"`. */

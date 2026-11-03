@@ -13,7 +13,7 @@ import { Notif } from "./notif.js";
 export class Updates extends Notif {
   static className = "_notif _notif-news";
 
-  static defautOptions = { autoHide: 30000 };
+  static defaultOptions = { autoHide: 30000 };
 
   /** @inheritdoc */
   init0() {

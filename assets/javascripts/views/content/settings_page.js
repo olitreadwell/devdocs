@@ -20,6 +20,7 @@ export class SettingsPage extends View {
   static events = {
     click: "onClick",
     change: "onChange",
+    keydown: "onKeydown",
   };
 
   /** Rebuilds the form from the stored preferences. */
@@ -34,12 +35,15 @@ export class SettingsPage extends View {
     settings.smoothScroll = !app.settings.get("fastScroll");
     settings.arrowScroll = app.settings.get("arrowScroll");
     settings.noAutofocus = app.settings.get("noAutofocus");
-    settings.autoInstall = app.settings.get("autoInstall");
     settings.autoLatestVersion = app.settings.get("autoLatestVersion");
     settings.analyticsConsent = app.settings.get("analyticsConsent");
     settings.spaceScroll = app.settings.get("spaceScroll");
     settings.spaceTimeout = app.settings.get("spaceTimeout");
     settings.noDocSpecificIcon = app.settings.get("noDocSpecificIcon");
+    settings.listPageSize = app.settings.get("listPageSize");
+    settings.baseFont = app.settings.get("baseFont");
+    settings.monoFont = app.settings.get("monoFont");
+    settings.customCss = app.settings.get("customCss");
     settings.autoSupported = app.settings.autoSupported;
     for (var layout of Settings.LAYOUTS) {
       settings[layout] = app.settings.hasLayout(layout);
@@ -161,11 +165,33 @@ export class SettingsPage extends View {
       case "spaceTimeout":
         this.setScrollTimeout(input.value);
         break;
+      case "baseFont":
+      case "monoFont":
+        app.settings.setFont(input.name, input.value);
+        break;
+      case "customCss":
+        app.settings.setCustomCss(input.value);
+        break;
+      case "listPageSize":
+        app.settings.set("listPageSize", Math.max(0, parseInt(input.value) || 0));
+        break;
       default:
         this.toggle(
           /** @type {keyof SettingsValues} */ (input.name),
           input.checked,
         );
+    }
+  }
+
+  /**
+   * Keeps the keyboard shortcuts out of the CSS field, where Enter and the
+   * arrow keys edit the text.
+   *
+   * @param {ViewKeyboardEvent} event
+   */
+  onKeydown(event) {
+    if (event.target.tagName === "TEXTAREA") {
+      event.stopPropagation();
     }
   }
 
