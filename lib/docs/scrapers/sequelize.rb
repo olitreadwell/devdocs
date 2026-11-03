@@ -16,7 +16,7 @@ module Docs
     # Skip the source files, the license page and the "Who's using Sequelize" page
     options[:skip_patterns] = [/\.js\.html/, /manual\/legal\.html/, /manual\/whos-using\.html/]
 
-    # License information that appears appears at the bottom of the entry page
+    # License information that appears at the bottom of the entry page
     options[:attribution] = <<-HTML
       Copyright &copy; 2014&ndash;present Sequelize contributors<br>
       Licensed under the MIT License.

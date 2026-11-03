@@ -117,7 +117,7 @@ Default `text_filters`:
 Additionally:
 
 * [`TitleFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/title.rb) is a core HTML filter, disabled by default, which prepends the document with a title (`<h1>`).
-* [`EntriesFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/entries.rb) is an abstract HTML filter that each scraper must implement and responsible for extracting the page's metadata.
+* [`EntriesFilter`](https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/entries.rb) is an abstract HTML filter that each scraper must implement and is responsible for extracting the page's metadata.
 
 ### Filter options
 
@@ -155,7 +155,7 @@ More information about how filters work is available on the [Filter Reference](.
     If `false`, does not convert or follow any internal URL (creating a single-page documentation).
     If the value is a Proc, it is called for each page with the filter instance as argument.
   - `:follow_links` [Proc]
-    Called for page with the filter instance as argument. If the returned value is `false`, does not add internal URLs to the queue.
+    Called for each page with the filter instance as argument. If the returned value is `false`, does not add internal URLs to the queue.
   - `:trailing_slash` [Boolean]
     If `true`, adds a trailing slash to all internal URLs. If `false`, removes it.
     This is another option used to remove duplicate pages.
@@ -205,7 +205,7 @@ These methods are run before filter stacks, and can directly process responses.
 
   Parse HTTP/File response, and convert to a Nokogiri document by default.
 
-  Overrides this method if you want to modify HTML source code before Nokogiri.
+  Override this method if you want to modify HTML source code before Nokogiri.
 It is useful to preserve whitespaces of code segments within non-pre blocks, because Nokogiri may delete them.
 
   Example: [lib/docs/scrapers/go.rb](../lib/docs/scrapers/go.rb)
@@ -249,17 +249,17 @@ To make life easier, there are a few utility methods that you can use in `get_la
 ### General HTTP methods
 * `fetch(url, opts)`
 
-  Makes a GET request to the url and returns the response body.
+  Makes a GET request to the URL and returns the response body.
 
   Example: [lib/docs/scrapers/bash.rb](../lib/docs/scrapers/bash.rb)
 * `fetch_doc(url, opts)`
 
-  Makes a GET request to the url and returns the HTML body converted to a Nokogiri document.
+  Makes a GET request to the URL and returns the HTML body converted to a Nokogiri document.
 
   Example: [lib/docs/scrapers/git.rb](../lib/docs/scrapers/git.rb)
 * `fetch_json(url, opts)`
 
-  Makes a GET request to the url and returns the JSON body converted to a dictionary.
+  Makes a GET request to the URL and returns the JSON body converted to a dictionary.
 
   Example: [lib/docs/scrapers/mdn/mdn.rb](../lib/docs/scrapers/mdn/mdn.rb)
 

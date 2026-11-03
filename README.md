@@ -150,6 +150,7 @@ thor test:all       # Run all tests
 thor test:docs      # Run "Docs" tests
 thor test:app       # Run "App" tests
 thor test:coverage  # Run coverage report for core tests
+thor test:coverage  # Run coverage report for core tests
 # The JavaScript assets are type-checked and tested with npm instead:
 npm run typecheck   # Type-check the assets and their tests
 npm test            # Run the asset tests

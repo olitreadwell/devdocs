@@ -67,7 +67,7 @@ module Docs
       url.sub!('cli/unpublish', 'cli/v8/commands/npm-unpublish/')
       url.sub!('files/package.json', 'cli/v8/configuring-npm/package-json/')
       url.sub!('cli/profile', 'cli/v8/commands/npm-profile/')
-      url.sub!('creating-a-packge-json-file', 'cli/v8/configuring-npm/package-json/')
+      url.sub!('creating-a-package-json-file', 'cli/v8/configuring-npm/package-json/')
       url.sub!('cli/dist-tag', 'cli/v8/commands/npm-dist-tag/')
       url.sub!('cli/team', 'cli/v8/commands/npm-team/')
       url.sub!('cli/version', 'cli/v8/commands/npm-version/')

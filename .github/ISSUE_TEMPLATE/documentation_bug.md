@@ -24,10 +24,10 @@ Add a description about how the documentation should be
 
 ## Actual style
 <!--
-Add images or urls of the mis-formatted DevDocs documentation
+Add images or URLs of the mis-formatted DevDocs documentation
 -->
 
 ## Expected style
 <!--
-Add images showing the expected style or urls of the source page
+Add images showing the expected style or URLs of the source page
 -->

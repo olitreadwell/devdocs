@@ -2,7 +2,7 @@ module Docs
   class Axios < UrlScraper
     self.type = 'simple'
     self.links = {
-      home: 'hthttps://axios-http.com/',
+      home: 'https://axios-http.com/',
       code: 'https://github.com/axios/axios'
     }
     self.release = '1.15.0'

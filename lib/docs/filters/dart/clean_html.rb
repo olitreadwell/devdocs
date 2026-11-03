@@ -21,8 +21,8 @@ module Docs
           library = breadcrumbs[1].content
 
           # Generate the link to the homepage of the library
-          with_hypens = library.gsub(/:/, '-')
-          location = "#{'../' * subpath.count('/')}#{with_hypens}/#{with_hypens}-library"
+          with_hyphens = library.gsub(/:/, '-')
+          location = "#{'../' * subpath.count('/')}#{with_hyphens}/#{with_hyphens}-library"
           link = "<a href=\"#{location}\" class=\"_links-link\">#{library}</span>"
 
           # Add the link to the main title, just like how the "Homepage" and "Source code" links appear
